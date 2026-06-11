@@ -1,0 +1,194 @@
+﻿estado,cidade,slug
+Acre,Rio Branco,rio-branco
+Alagoas,Arapiraca,arapiraca
+Alagoas,Maceió,maceio
+Amapá,Macapá,macapa
+Amazonas,Manaus,manaus
+Bahia,Camaçari,camacari
+Bahia,Feira de Santana,feira-de-santana
+Bahia,Itabuna,itabuna
+Bahia,Juazeiro,juazeiro
+Bahia,Lauro de Freitas,lauro-de-freitas
+Bahia,Porto Seguro,porto-seguro
+Bahia,Salvador,salvador
+Bahia,Serrinha,serrinha
+Bahia,Vitória da Conquista,vitoria-da-conquista
+Ceará,Cascavel,cascavel
+Ceará,Fortaleza,fortaleza
+Ceará,Juazeiro do Norte,juazeiro-do-norte
+Ceará,Maracanaú,maracanau
+Distrito Federal,Brasília,brasilia
+Distrito Federal,Taguatinga,taguatinga
+Espírito Santo,Aracruz,aracruz
+Espírito Santo,Cariacica,cariacica
+Espírito Santo,Linhares,linhares
+Espírito Santo,São Mateus,sao-mateus
+Espírito Santo,Serra,serra
+Espírito Santo,Vila Velha,vila-velha
+Espírito Santo,Vitória,vitoria
+Goiás,Aparecida de Goiânia,aparecida-de-goiania
+Goiás,Goiânia,goiania
+Goiás,Rio Verde,rio-verde
+Goiás,Valparaíso,valparaiso
+Maranhão,Imperatriz,imperatriz
+Maranhão,São Luís,sao-luis
+Mato Grosso,Cuiabá,cuiaba
+Mato Grosso,SINOP,sinop
+Mato Grosso,Varzea Grande,varzea-grande
+Mato Grosso do Sul,Campo Grande,campo-grande
+Mato Grosso do Sul,Dourados,dourados
+Mato Grosso do Sul,Três Lagoas,tres-lagoas
+Minas Gerais,Barbacena,barbacena
+Minas Gerais,Belo Horizonte,belo-horizonte
+Minas Gerais,Betim,betim
+Minas Gerais,Cambuí,cambui
+Minas Gerais,Contagem,contagem
+Minas Gerais,Ipatinga,ipatinga
+Minas Gerais,Juiz de Fora,juiz-de-fora
+Minas Gerais,Montes Claros,montes-claros
+Minas Gerais,Poços de Caldas,pocos-de-caldas
+Minas Gerais,Pouso Alegre,pouso-alegre
+Minas Gerais,São João Nepomuceno,sao-joao-nepomuceno
+Minas Gerais,Uberaba,uberaba
+Minas Gerais,Uberlândia,uberlandia
+Minas Gerais,Varginha,varginha
+Pará,Ananindeua,ananindeua
+Pará,Belém,belem
+Pará,Castanhal,castanhal
+Pará,Marabá,maraba
+Pará,Santarém,santarem
+Paraíba,João Pessoa,joao-pessoa
+Paraná,Campo Largo,campo-largo
+Paraná,Cascavel PR,cascavel-pr
+Paraná,Castro,castro
+Paraná,Curitiba,curitiba
+Paraná,Fazenda Rio Grande,fazenda-rio-grande
+Paraná,Foz do Iguaçu,foz-do-iguacu
+Paraná,Francisco Beltrão,francisco-beltrao
+Paraná,Londrina,londrina
+Paraná,Maringá,maringa
+Paraná,Paranaguá,paranagua
+Paraná,Pato Branco,pato-branco
+Paraná,Ponta Grossa,ponta-grossa
+Paraná,São José dos Pinhais,sao-jose-dos-pinhais
+Pernambuco,Cabo de Santo Agostinho,cabo-de-santo-agostinho
+Pernambuco,Carpina,carpina
+Pernambuco,Caruaru,caruaru
+Pernambuco,Jaboatão dos Guararapes,jaboatao-dos-guararapes
+Pernambuco,Olinda,olinda
+Pernambuco,Paulista,paulista
+Pernambuco,Petrolina,petrolina
+Pernambuco,Recife,recife
+Piauí,Teresina,teresina
+Rio de Janeiro,Angra dos Reis,angra-dos-reis
+Rio de Janeiro,Barra do Piraí,barra-do-pirai
+Rio de Janeiro,Barra Mansa,barra-mansa
+Rio de Janeiro,Cabo Frio,cabo-frio
+Rio de Janeiro,Campos dos Goytacazes,campos-dos-goytacazes
+Rio de Janeiro,Duque de Caxias,duque-de-caxias
+Rio de Janeiro,Ingresso,ingresso
+Rio de Janeiro,Itaboraí,itaborai
+Rio de Janeiro,Itaperuna,itaperuna
+Rio de Janeiro,Macaé,macae
+Rio de Janeiro,Miracema,miracema
+Rio de Janeiro,Niterói,niteroi
+Rio de Janeiro,Nova Friburgo,nova-friburgo
+Rio de Janeiro,Nova Iguaçu,nova-iguacu
+Rio de Janeiro,Paracambi,paracambi
+Rio de Janeiro,Petrópolis,petropolis
+Rio de Janeiro,Resende,resende
+Rio de Janeiro,Rio das Ostras,rio-das-ostras
+Rio de Janeiro,Rio de Janeiro,rio-de-janeiro
+Rio de Janeiro,São Gonçalo,sao-goncalo
+Rio de Janeiro,São João de Meriti,sao-joao-de-meriti
+Rio de Janeiro,Saquarema,saquarema
+Rio de Janeiro,Teresópolis,teresopolis
+Rio de Janeiro,Três Rios,tres-rios
+Rio de Janeiro,Valença,valenca
+Rio de Janeiro,Vassouras,vassouras
+Rio de Janeiro,Volta Redonda,volta-redonda
+Rio Grande do Norte,Natal,natal
+Rio Grande do Sul,Canoas,canoas
+Rio Grande do Sul,Caxias do Sul,caxias-do-sul
+Rio Grande do Sul,Novo Hamburgo,novo-hamburgo
+Rio Grande do Sul,Passo Fundo,passo-fundo
+Rio Grande do Sul,Pelotas,pelotas
+Rio Grande do Sul,Porto Alegre,porto-alegre
+Rio Grande do Sul,Rio Grande,rio-grande
+Rio Grande do Sul,Santa Maria,santa-maria
+Rio Grande do Sul,São Leopoldo,sao-leopoldo
+Rondônia,Porto Velho,porto-velho
+Roraima,Boa Vista,boa-vista
+Santa Catarina,Balneário Camboriu,balneario-camboriu
+Santa Catarina,Blumenau,blumenau
+Santa Catarina,Canoinhas,canoinhas
+Santa Catarina,Chapecó,chapeco
+Santa Catarina,Criciúma,criciuma
+Santa Catarina,Florianópolis,florianopolis
+Santa Catarina,Joinville,joinville
+Santa Catarina,Lages,lages
+Santa Catarina,Mafra,mafra
+Santa Catarina,São José,sao-jose
+Santa Catarina,Tubarão,tubarao
+São Paulo,Araçatuba,aracatuba
+São Paulo,Araraquara,araraquara
+São Paulo,Atibaia,atibaia
+São Paulo,Bariri,bariri
+São Paulo,Barretos,barretos
+São Paulo,Barueri,barueri
+São Paulo,Bauru,bauru
+São Paulo,Boituva,boituva
+São Paulo,Botucatu,botucatu
+São Paulo,Bragança Paulista,braganca-paulista
+São Paulo,Campinas,campinas
+São Paulo,Caraguatatuba,caraguatatuba
+São Paulo,Carapicuíba,carapicuiba
+São Paulo,Cotia,cotia
+São Paulo,Cruzeiro,cruzeiro
+São Paulo,Cubatão,cubatao
+São Paulo,Diadema,diadema
+São Paulo,Franca,franca
+São Paulo,Guararema,guararema
+São Paulo,Guarulhos,guarulhos
+São Paulo,Hortolândia,hortolandia
+São Paulo,Itanhaém,itanhaem
+São Paulo,Itapevi,itapevi
+São Paulo,Itaquaquecetuba,itaquaquecetuba
+São Paulo,Itatiba,itatiba
+São Paulo,Itu,itu
+São Paulo,Jacarei,jacarei
+São Paulo,Jales,jales
+São Paulo,Jaú,jau
+São Paulo,Jundiaí,jundiai
+São Paulo,Lençois Paulista,lencois-paulista
+São Paulo,Limeira,limeira
+São Paulo,Marília,marilia
+São Paulo,Mauá,maua
+São Paulo,Mogi das Cruzes,mogi-das-cruzes
+São Paulo,Mogi Guaçu,mogi-guacu
+São Paulo,Osasco,osasco
+São Paulo,Ourinhos,ourinhos
+São Paulo,Piracicaba,piracicaba
+São Paulo,Praia Grande,praia-grande
+São Paulo,Presidente Prudente,presidente-prudente
+São Paulo,Ribeirão Preto,ribeirao-preto
+São Paulo,Salto,salto
+São Paulo,Santa Bárbara Do Oeste,santa-barbara-do-oeste
+São Paulo,Santo André,santo-andre
+São Paulo,Santos,santos
+São Paulo,São Bernardo do Campo,sao-bernardo-do-campo
+São Paulo,São Caetano do Sul,sao-caetano-do-sul
+São Paulo,São Carlos,sao-carlos
+São Paulo,São José do Rio Preto,sao-jose-do-rio-preto
+São Paulo,São José dos Campos,sao-jose-dos-campos
+São Paulo,São Roque,sao-roque
+São Paulo,São Vicente,sao-vicente
+São Paulo,Sorocaba,sorocaba
+São Paulo,Sumaré,sumare
+São Paulo,Suzano,suzano
+São Paulo,Taboão da Serra,taboao-da-serra
+São Paulo,Tatuí,tatui
+São Paulo,Taubaté,taubate
+São Paulo,Votuporanga,votuporanga
+Sergipe,Aracaju,aracaju
+Tocantins,Palmas,palmas
