@@ -22,7 +22,7 @@ def extrair_cidades_do_texto(texto):
         if linha == "Trocar Cidade":
             break
 
-        if coletando and linha not in ["Últimos Locais", "São Paulo"]:
+        if coletando and linha not in ["Últimos Locais"]:
             cidades.append(linha)
 
     return cidades

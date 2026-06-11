@@ -3,89 +3,57 @@ import pandas as pd
 from datetime import datetime
 import re
 import unicodedata
+import os
 
 def limpar_nome(texto):
-    texto = texto.lower().strip()
+    texto = str(texto).lower().strip()
     texto = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode("utf-8")
     texto = re.sub(r"[^a-z0-9]+", "-", texto)
     return texto.strip("-")
 
-def extrair_cidades_do_texto(texto):
-    linhas = [l.strip() for l in texto.split("\n") if l.strip()]
+def carregar_cidades_csv():
+    if not os.path.exists("cidades.csv"):
+        print("ERRO: O arquivo cidades.csv não foi encontrado.")
+        print("Coloque o cidades.csv na mesma pasta do monitoramento.py.")
+        exit()
+
+    df = pd.read_csv("cidades.csv")
+
     cidades = []
-    coletando = False
 
-    for linha in linhas:
-        if linha == "Cidade":
-            coletando = True
-            continue
-
-        if linha == "Trocar Cidade":
-            break
-
-        if coletando and linha not in ["Últimos Locais", "São Paulo"]:
-            cidades.append(linha)
+    for _, row in df.iterrows():
+        cidades.append({
+            "estado": str(row["estado"]),
+            "nome": str(row["cidade"]),
+            "slug": str(row["slug"])
+        })
 
     return cidades
 
-def coletar_cidades_ingresso(page, estados_escolhidos):
-    estados = [
-        "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará",
-        "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão",
-        "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará",
-        "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro",
-        "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima",
-        "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
+def filtrar_estados(cidades, estados_texto):
+    estados_usuario = [
+        limpar_nome(e.strip())
+        for e in estados_texto.split(",")
+        if e.strip()
     ]
 
-    if estados_escolhidos.lower() != "todos":
-        estados_usuario = [limpar_nome(e.strip()) for e in estados_escolhidos.split(",")]
-        estados = [e for e in estados if limpar_nome(e) in estados_usuario]
+    return [
+        c for c in cidades
+        if limpar_nome(c["estado"]) in estados_usuario
+    ]
 
-    todas_cidades = []
+def filtrar_cidades(cidades, estado_texto, cidades_texto):
+    cidades_usuario = [
+        limpar_nome(c.strip())
+        for c in cidades_texto.split(",")
+        if c.strip()
+    ]
 
-    page.goto("https://www.ingresso.com/", timeout=90000)
-    page.wait_for_load_state("domcontentloaded")
-    page.wait_for_timeout(1000)
-
-    page.get_by_text("São Paulo", exact=True).click(timeout=10000)
-    page.wait_for_timeout(800)
-
-    for estado in estados:
-        try:
-            print(f"Coletando cidades de {estado}...")
-            page.locator("select").first.select_option(label=estado)
-            page.wait_for_timeout(400)
-
-            texto = page.inner_text("body")
-            cidades = extrair_cidades_do_texto(texto)
-
-            for cidade in cidades:
-                todas_cidades.append({
-                    "estado": estado,
-                    "nome": cidade,
-                    "slug": limpar_nome(cidade)
-                })
-
-        except Exception as e:
-            print(f"Erro ao coletar cidades de {estado}: {e}")
-
-    return todas_cidades
-
-def criar_cidades_especificas(estado, cidades_texto):
-    cidades = []
-
-    for cidade in cidades_texto.split(","):
-        cidade = cidade.strip()
-
-        if cidade:
-            cidades.append({
-                "estado": estado.strip(),
-                "nome": cidade,
-                "slug": limpar_nome(cidade)
-            })
-
-    return cidades
+    return [
+        c for c in cidades
+        if limpar_nome(c["estado"]) == limpar_nome(estado_texto)
+        and limpar_nome(c["nome"]) in cidades_usuario
+    ]
 
 def extrair_horarios(texto, filme, estado, cidade, fonte, site):
     linhas = [l.strip() for l in texto.split("\n") if l.strip()]
@@ -100,8 +68,12 @@ def extrair_horarios(texto, filme, estado, cidade, fonte, site):
                 linha_teste = linhas[j].lower()
 
                 if any(p in linha_teste for p in [
-                    "cinemark", "kinoplex", "uci", "cinepolis",
-                    "ponto cine", "moviecom"
+                    "cinemark",
+                    "kinoplex",
+                    "uci",
+                    "cinepolis",
+                    "ponto cine",
+                    "moviecom"
                 ]):
                     cinema = linhas[j]
                     break
@@ -131,6 +103,31 @@ filme = input("Digite o nome do filme: ").strip()
 slug_filme = limpar_nome(filme)
 print(f"\nSlug gerado automaticamente: {slug_filme}\n")
 
+todas_cidades = carregar_cidades_csv()
+
+if modo == "1":
+    cidades = todas_cidades
+
+elif modo == "2":
+    estados_escolhidos = input("Digite os estados separados por vírgula: ").strip()
+    cidades = filtrar_estados(todas_cidades, estados_escolhidos)
+
+elif modo == "3":
+    estado = input("Digite o estado: ").strip()
+    cidades_texto = input("Digite as cidades separadas por vírgula: ").strip()
+    cidades = filtrar_cidades(todas_cidades, estado, cidades_texto)
+
+else:
+    print("Modo inválido. Encerrando o programa.")
+    exit()
+
+if len(cidades) == 0:
+    print("\nNenhuma cidade encontrada para os filtros informados.")
+    print("Verifique se escreveu o estado/cidade corretamente.")
+    exit()
+
+print(f"\nTotal de cidades para análise: {len(cidades)}\n")
+
 todos_dados = []
 sem_resultado = []
 
@@ -138,24 +135,12 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     page = browser.new_page()
 
-    if modo == "1":
-        cidades = coletar_cidades_ingresso(page, "todos")
-
-    elif modo == "2":
-        estados_escolhidos = input("Digite os estados separados por vírgula: ").strip()
-        cidades = coletar_cidades_ingresso(page, estados_escolhidos)
-
-    elif modo == "3":
-        estado = input("Digite o estado: ").strip()
-        cidades_texto = input("Digite as cidades separadas por vírgula: ").strip()
-        cidades = criar_cidades_especificas(estado, cidades_texto)
-
-    else:
-        print("Modo inválido. Encerrando o programa.")
-        browser.close()
-        exit()
-
-    print(f"\nTotal de cidades para análise: {len(cidades)}\n")
+    page.route(
+        "*/",
+        lambda route: route.abort()
+        if route.request.resource_type in ["image", "font", "media"]
+        else route.continue_()
+    )
 
     for cidade in cidades:
         print(f"Analisando: {cidade['nome']} - {cidade['estado']}")
@@ -163,9 +148,12 @@ with sync_playwright() as p:
         url_ingresso = f"https://www.ingresso.com/filme/{slug_filme}?city={cidade['slug']}&partnership=home"
 
         try:
-            page.goto(url_ingresso, timeout=90000)
-            page.wait_for_load_state("domcontentloaded")
-            page.wait_for_timeout(700)
+            page.goto(url_ingresso, timeout=90000, wait_until="domcontentloaded")
+
+            try:
+                page.wait_for_selector("text=/\\d{2}:\\d{2}/", timeout=1800)
+            except:
+                pass
 
             texto = page.inner_text("body")
 
